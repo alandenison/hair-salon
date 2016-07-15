@@ -78,7 +78,8 @@ namespace HairSalon
        {
          Client newClient = (Client) otherClient;
          bool nameEquality = (this.GetName() == newClient.GetName());
-         return (nameEquality);
+         bool stylistIdEquality = (this.GetStylistId() == newClient.GetStylistId());
+         return (nameEquality && stylistIdEquality);
        }
      }
     public static void DeleteAll()
