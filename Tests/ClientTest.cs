@@ -30,10 +30,24 @@ namespace HairSalon
     {
       //Arrange, Act
       Client firstClient = new Client("Harry Knights", 1);
-      Client secondClient = new Client("Harry Knights", 2);
+      Client secondClient = new Client("Harry Knights", 1);
 
       //Assert
       Assert.Equal(firstClient, secondClient);
+    }
+    [Fact]
+    public void Test_Save_SavesToDatabase()
+    {
+      //Arrange
+      Client testClient = new Client("Harry Knights", 1);
+
+      //Act
+      testClient.Save();
+      List<Client> result = Client.GetAll();
+      List<Client> testList = new List<Client>{testClient};
+
+      //Assert
+      Assert.Equal(testList, result);
     }
   }
 }
