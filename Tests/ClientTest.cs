@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace HairSalon
+namespace HairSalon.Objects
 {
   public class ClientTest : IDisposable
   {
@@ -13,10 +13,7 @@ namespace HairSalon
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon_test;Integrated Security=SSPI;";
     }
 
-    public void Dispose()
-    {
-      Client.DeleteAll();
-    }
+
 
     [Fact]
     public void Test_DatabaseEmptyAtFirst()
@@ -83,6 +80,10 @@ namespace HairSalon
 
       //Assert
       Assert.Equal(testClient, foundClient);
+    }
+    public void Dispose()
+    {
+      Client.DeleteAll();
     }
   }
 }

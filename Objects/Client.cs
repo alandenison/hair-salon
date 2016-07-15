@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
 
-namespace HairSalon
+namespace HairSalon.Objects
 {
   public class Client
   {
@@ -139,7 +139,7 @@ namespace HairSalon
          foundClientStylistId = rdr.GetInt32(2);
        }
        Client foundClient = new Client(foundClientName, foundClientStylistId, foundClientId);
- 
+
        if (rdr != null)
        {
          rdr.Close();
