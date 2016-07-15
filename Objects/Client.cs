@@ -86,7 +86,7 @@ namespace HairSalon
         int clientId = rdr.GetInt32(0);
         string clientName = rdr.GetString(1);
         int clientStylistId = rdr.GetInt32(2);
-        Client newClient = new Client(clientName, clientStylistId);
+        Client newClient = new Client(clientName, clientStylistId, clientId);
         allClients.Add(newClient);
       }
 
@@ -110,9 +110,10 @@ namespace HairSalon
        else
        {
          Client newClient = (Client) otherClient;
+         bool idEquality = (this.GetId() == newClient.GetId());
          bool nameEquality = (this.GetName() == newClient.GetName());
          bool stylistIdEquality = (this.GetStylistId() == newClient.GetStylistId());
-         return (nameEquality && stylistIdEquality);
+         return (idEquality && nameEquality && stylistIdEquality);
        }
      }
     public static void DeleteAll()
