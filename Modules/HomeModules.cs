@@ -48,6 +48,20 @@ namespace HairSalon.Objects
         SelectedStylist.Delete();
         return View["success.cshtml"];
       };
+      Get["client/{id}"] = parameters => {
+        var SelectedClient = Client.Find(parameters.id);
+        return View["client.cshtml", SelectedClient];
+      };
+      Patch["client/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        SelectedClient.Update(Request.Form["client-name"]);
+        return View["success.cshtml"];
+      };
+      Delete["client/delete/{id}"] = parameters => {
+      Client SelectedClient = Client.Find(parameters.id);
+      SelectedClient.Delete();
+      return View["success.cshtml"];
+      };
     }
   }
 }

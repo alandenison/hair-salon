@@ -84,6 +84,7 @@ namespace HairSalon.Objects
     public void Dispose()
     {
       Client.DeleteAll();
+      Stylist.DeleteAll();
     }
     [Fact]
     public void Test_Delete_DeletesStylistFromDatabase()
@@ -113,6 +114,27 @@ namespace HairSalon.Objects
       //Assert
       Assert.Equal(testStylistList, resultStylists);
       Assert.Equal(testClientList, resultClients);
+    }
+    [Fact]
+    public void Test_Delete_DeletesClientFromDatabase()
+    {
+      //Arrange
+      string name1 = "Giggy Sanjan";
+      Client testClient1 = new Client(name1, 1);
+      testClient1.Save();
+
+      string name2 = "Harry Knights";
+      Client testClient2 = new Client(name2, 2);
+      testClient2.Save();
+
+
+      //Act
+      testClient1.Delete();
+      List<Client> resultClient = Client.GetAll();
+      List<Client> testClientList = new List<Client> {testClient2};
+
+      //Assert
+      Assert.Equal(testClientList, resultClient);
     }
   }
 }

@@ -119,6 +119,7 @@ namespace HairSalon.Objects
     public void Dispose()
     {
       Stylist.DeleteAll();
+      Client.DeleteAll();
     }
   }
 }
